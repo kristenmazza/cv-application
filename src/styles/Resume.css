@@ -1,0 +1,82 @@
+.resume-container {
+    flex: 1;
+    max-width: 600px;
+    min-width: 400px;
+    padding: 10px;
+    margin: 30px;
+    background-color: #fbfbfb;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.resume-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resume-contact-name {
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1;
+}
+
+.resume-contact-row {
+    font-size: 12px;
+    line-height: 0;
+}
+
+.contact-email {
+    text-decoration: underline;
+}
+
+.resume-content {
+    padding: 30px;
+}
+
+.resume-heading {
+    padding-top: 20px;
+    line-height: 0;
+    text-transform: uppercase;
+    font-size: 17px;
+    font-weight: normal;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    padding: 0;
+    margin: 0;
+}
+
+.resume-education-block {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.resume-block-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.school-name,
+.school-location {
+    font-size: 13px;
+}
+
+.school-name {
+    font-weight: bold;
+}
+
+.degree,
+.degree-year {
+    font-size: 12px;
+    line-height: 1;
+    font-style: italic;
+}
+
