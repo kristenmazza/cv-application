@@ -1,21 +1,21 @@
 import PropTypes from 'prop-types';
 
-export default function Resume() {
+export default function Resume(props) {
     return (
         <>
             <div className="resume-container">
-                <ResumeContent />
+                <ResumeContent {...props} />
             </div>
         </>
     )
 }
 
-export function ResumeContent() {
+export function ResumeContent({name, number}) {
     return (
         <div className="resume-content">
             <ResumeContact
-                name={"Liam Benson"}
-                number={"(555) 555-2352"}
+                name={name}
+                number={number}
                 email={"demo@gmail.com"}
                 location={"Los Angeles, CA"}
             />
@@ -222,4 +222,9 @@ ExperienceEntrySubheading.propTypes = {
 ExperienceEntrySubheadingItalics.propTypes = {
     jobCompany: PropTypes.string,
     jobLocation: PropTypes.string,
+}
+
+ResumeContent.propTypes = {
+    name: PropTypes.string,
+    number: PropTypes.string
 }
