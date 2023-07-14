@@ -1,6 +1,7 @@
 // import { useState } from 'react'
 import '../styles/App.css'
 import '../styles/Resume.css'
+import '../styles/Editor.css'
 import Editor from './Editor'
 import Resume from './Resume'
 

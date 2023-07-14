@@ -1,0 +1,73 @@
+form {
+    padding: 15px 30px;
+}
+
+.editor-heading {
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1;
+    color: #fefefe;
+    margin: 8px 0;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.hidden {
+    display: none;
+}
+
+textarea,
+input {
+    font-family: 'Roboto', 'Calibri', 'Arial';
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    background-color: #456d58;
+    outline: 0;
+    border-radius: 2px;
+    border-width: 0 0 2px;
+    border-color: #74b995;
+    color: #fbfbfb;
+}
+
+textarea {
+    margin-top: 3px;
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #d8d8d8;
+    opacity: 1;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #d8d8d8;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #d8d8d8;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #FFCB77;
+    /* outline: 1px dotted #c3c3c3 */
+}
+
+textarea {
+    height: 65px;
+}
+
+textarea::placeholder {
+    transform: translateY(50px);
+    font-family: inherit;
+}
