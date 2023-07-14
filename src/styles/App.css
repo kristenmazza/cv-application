@@ -8,7 +8,7 @@ html,
 body {
   font-family: 'Roboto', 'Calibri', 'Arial';
   color: rgb(28, 28, 28);
-  background-color: #fbfbfb;
+  background-color: #336049;
 }
 
 .content {
@@ -27,9 +27,9 @@ body {
   min-width: 400px;
   padding: 10px;
   margin: 30px;
-  background-color: #eee;
-  border: 2px solid #ababab;
-  border-radius: 5px;
+  background-color: #406954;
+  border-radius: 10px;
+  box-shadow: rgba(74, 141, 101, 0.12) 0px 1px 2px 0px, rgba(36, 86, 60, 0.32) 0px 2px 16px 0px;
 }
 
 
