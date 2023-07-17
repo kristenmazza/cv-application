@@ -10,19 +10,19 @@ export default function Resume(props) {
     )
 }
 
-export function ResumeContent({name, number}) {
+export function ResumeContent({name, number, email, location, summary, educationEntries}) {
     return (
         <div className="resume-content">
             <ResumeContact
                 name={name}
                 number={number}
-                email={"demo@gmail.com"}
-                location={"Los Angeles, CA"}
+                email={email}
+                location={location}
             />
             <ResumeHeading title={"About"} />
-            <ResumeSummaryBlock summary={"Results-oriented and compassionate psychologist with a proven track record in providing exceptional psychological services. Possesses a deep understanding of diverse learning needs, disabilities, and behavioral challenges. Seeking a rewarding opportunity in a private practice setting to apply my expertise and dedication to empowering students and fostering their well-being."} />
+            <ResumeSummaryBlock summary={summary} />
             <ResumeHeading title={"Education"} />
-            <ResumeEducationBlock/>
+            <ResumeEducationBlock educationEntries={educationEntries} />
             <ResumeHeading title={("Experience")} />
             <ResumeExperienceBlock />
         </div>
@@ -58,24 +58,28 @@ function ResumeSummaryBlock({summary}) {
 }
 
 // Education section
-function ResumeEducationBlock() {
+function ResumeEducationBlock({educationEntries}) {
     return (
         <div className="resume-block">
-            {/* for each education entry, create entry below */}
-            <EducationEntry
-                school={"California State University Los Angeles"}
-                schoolLocation={"Los Angeles, CA"}
-                schoolDegree={"Bachelor of Science in Psychology"}
-                schoolDateStart={"Aug. 2014"}
-                schoolDateEnd={"Aug. 2018"}
-            />
+            {educationEntries.map(entry =>
+                <div className="education-entry" key={entry.id}>
+                    <EducationEntry
+                        school={entry.school}
+                        schoolLocation={entry.schoolLocation}
+                        schoolDegree={entry.schoolDegree}
+                        schoolDateStart={entry.schoolDateStart}
+                        schoolDateEnd={entry.schoolDateEnd}
+                    />
+                </div>
+            )}
         </div>
     )
 }
 
+
 function EducationEntry({school, schoolLocation, schoolDegree, schoolDateStart, schoolDateEnd}) {
     return (
-        <div className="education-entry">
+        <>
             <EducationEntrySubheading
                 school={school}
                 schoolLocation={schoolLocation}
@@ -85,7 +89,7 @@ function EducationEntry({school, schoolLocation, schoolDegree, schoolDateStart, 
                 schoolDateStart={schoolDateStart}
                 schoolDateEnd={schoolDateEnd}
             />
-        </div>
+        </>
     )
 }
 
@@ -226,5 +230,13 @@ ExperienceEntrySubheadingItalics.propTypes = {
 
 ResumeContent.propTypes = {
     name: PropTypes.string,
-    number: PropTypes.string
+    number: PropTypes.string,
+    email: PropTypes.string,
+    location: PropTypes.string,
+    summary: PropTypes.string,
+    educationEntries: PropTypes.array,
+}
+
+ResumeEducationBlock.propTypes = {
+    educationEntries: PropTypes.array,
 }
