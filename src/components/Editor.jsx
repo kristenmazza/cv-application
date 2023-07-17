@@ -72,7 +72,8 @@ function Form(props) {
             </section>
             <section>
                 <h2 className="editor-heading">Education</h2>
-                    <FormEducation {...props} />
+                <FormEducation {...props} />
+                {/* <AddEducationButton /> */}
             </section>
         </form>
     )
@@ -89,10 +90,22 @@ function handleSchoolInputChange(e, id, educationEntries, setEducationEntries, i
     setEducationEntries(newEducationEntries);
 }
 
+function DeleteEducationButton() {
+    return (
+        <button className="delete-button">Delete</button>
+    )
+}
+
+function AddEducationButton() {
+    return (
+        <button className="add-button">Add</button>
+    )
+}
+
 function FormEducation(props) {
     return (
         <>
-            {props.educationEntries.map(entry => (
+            {props.educationEntries.map((entry, i) => (
                 <div className="form-group education-entry" key={entry.id}>
                     <label htmlFor="input-school-name">
                         <div className="hidden">university</div>
@@ -149,9 +162,13 @@ function FormEducation(props) {
                             onChange={(e) => handleSchoolInputChange(e, entry.id, props.educationEntries, props.setEducationEntries, "schoolDateEnd")}
                         ></input>
                     </label>
+                    <div className="button-group">
+                        <DeleteEducationButton />
+                        {i === props.educationEntries.length - 1 && <AddEducationButton />}
+                    </div>
                 </div>
             ))}
-           </>
+        </>
     )
 }
 

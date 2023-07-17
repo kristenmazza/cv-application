@@ -76,3 +76,18 @@ textarea::placeholder {
 .education-entry {
     padding-bottom: 20px;
 }
+
+.delete-button {
+    width: 70px;
+    font-size: 12px;
+}
+
+.add-button {
+    width:70px;
+    font-size: 12px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
