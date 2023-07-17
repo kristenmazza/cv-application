@@ -78,6 +78,17 @@ function Form(props) {
     )
 }
 
+function handleSchoolInputChange(e, id, educationEntries, setEducationEntries, item) {
+
+    const currentEducationEntryIndex = educationEntries.findIndex((entry) => entry.id === id);
+    const updatedEducationEntry = { ...educationEntries[currentEducationEntryIndex], [item]: e.target.value };
+    const newEducationEntries = [...educationEntries.slice(0, currentEducationEntryIndex),
+        updatedEducationEntry,
+        ...educationEntries.slice(currentEducationEntryIndex + 1)]
+
+    setEducationEntries(newEducationEntries);
+}
+
 function FormEducation(props) {
     return (
         <>
@@ -91,7 +102,7 @@ function FormEducation(props) {
                             name="school-name"
                             placeholder="University"
                             value={entry.school}
-                        // onChange={(e) => setName(e.target.value)}
+                            onChange={(e) => handleSchoolInputChange(e, entry.id, props.educationEntries, props.setEducationEntries, "school")}
                         ></input>
                     </label>
                     <label htmlFor="input-school-location">
@@ -102,7 +113,7 @@ function FormEducation(props) {
                             name="school-location"
                             placeholder="Location"
                             value={entry.schoolLocation}
-                        // onChange={(e) => setName(e.target.value)}
+                            onChange={(e) => handleSchoolInputChange(e, entry.id, props.educationEntries, props.setEducationEntries, "schoolLocation")}
                         ></input>
                     </label>
                     <label htmlFor="input-school-degree">
@@ -113,7 +124,7 @@ function FormEducation(props) {
                             name="school-degree"
                             placeholder="Degree"
                             value={entry.schoolDegree}
-                        // onChange={(e) => setName(e.target.value)}
+                            onChange={(e) => handleSchoolInputChange(e, entry.id, props.educationEntries, props.setEducationEntries, "schoolDegree")}
                         ></input>
                     </label>
                      <label htmlFor="input-school-date-start">
@@ -124,7 +135,7 @@ function FormEducation(props) {
                             name="school-date-start"
                             placeholder="Start Date"
                             value={entry.schoolDateStart}
-                        // onChange={(e) => setName(e.target.value)}
+                            onChange={(e) => handleSchoolInputChange(e, entry.id, props.educationEntries, props.setEducationEntries, "schoolDateStart")}
                         ></input>
                     </label>
                     <label htmlFor="input-school-date-end">
@@ -135,7 +146,7 @@ function FormEducation(props) {
                             name="school-date-end"
                             placeholder="End Date"
                             value={entry.schoolDateEnd}
-                        // onChange={(e) => setName(e.target.value)}
+                            onChange={(e) => handleSchoolInputChange(e, entry.id, props.educationEntries, props.setEducationEntries, "schoolDateEnd")}
                         ></input>
                     </label>
                 </div>
@@ -160,4 +171,5 @@ Form.propTypes = {
 
 FormEducation.propTypes = {
     educationEntries: PropTypes.array,
+    setEducationEntries: PropTypes.func,
 }

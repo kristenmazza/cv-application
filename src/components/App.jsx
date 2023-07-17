@@ -14,7 +14,7 @@ function App() {
 
   const initialEducationEntries = [
     {
-      school: "California State University Los Angeles",
+      school: "California State University, Los Angeles",
       schoolLocation: "Los Angeles, CA",
       schoolDegree: "Bachelor of Science in Psychology",
       schoolDateStart: "Aug. 2014",
@@ -22,11 +22,11 @@ function App() {
       id: crypto.randomUUID(),
     },
     {
-      school: "UCLA",
-      schoolLocation: "Los Angeles, CA",
+      school: "California State University, Northridge",
+      schoolLocation: "Northridge, CA",
       schoolDegree: "Master of Science in Psychology",
-      schoolDateStart: "Aug. 2014",
-      schoolDateEnd: "Aug. 2018",
+      schoolDateStart: "Aug. 2019",
+      schoolDateEnd: "May 2021",
       id: crypto.randomUUID(),
     },
   ];
