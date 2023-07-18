@@ -11,6 +11,7 @@ export default function Editor(props) {
 
 function Form(props) {
     const [isEduAddButtonShown, setIsEduAddButtonShown] = useState(false);
+    const [isExpAddButtonShown, setIsExpAddButtonShown] = useState(false);
 
     return (
         <form>
@@ -77,7 +78,7 @@ function Form(props) {
                 <h2 className="editor-heading">Education</h2>
                 <FormEducation {...props} isEduAddButtonShown={isEduAddButtonShown} setIsEduAddButtonShown={setIsEduAddButtonShown} />
                 <h2 className="editor-heading">Experience</h2>
-                <FormExperience {...props} />
+                <FormExperience {...props} isExpAddButtonShown={isExpAddButtonShown} setIsExpAddButtonShown={setIsExpAddButtonShown} />
             </section>
         </form>
     )
@@ -219,6 +220,47 @@ function handleJobInputChange(e, id, jobEntries, setJobEntries, item) {
     setJobEntries(newJobEntries);
 }
 
+function handleRemoveJob({ entryId, jobEntries, setJobEntries, setIsExpAddButtonShown }) {
+    const newExperienceList = jobEntries.filter((entry) => entry.id !== entryId);
+    setJobEntries(newExperienceList);
+
+    // Show add button if there are no job entries
+    if (newExperienceList.length === 0) {
+        setIsExpAddButtonShown(true);
+    }
+}
+
+function handleAddJob(e, { setJobEntries, setIsExpAddButtonShown }) {
+    e.preventDefault();
+    const newItem = {
+        school: "",
+        schoolLocation: "",
+        schoolDegree: "",
+        schoolDateStart: "",
+        schoolDateEnd: "",
+        id: crypto.randomUUID(),
+    }
+    setJobEntries(jobEntries => [...jobEntries, newItem]);
+    setIsExpAddButtonShown(false);
+}
+
+function DeleteJobButton({entryId, jobEntries, setJobEntries, setIsExpAddButtonShown}) {
+    return (
+        <button
+            type="button"
+            className="delete-button"
+            id={entryId}
+            onClick={() => handleRemoveJob({ entryId, jobEntries, setJobEntries, setIsExpAddButtonShown })}
+        >Delete</button>
+    )
+}
+
+function AddJobButton({ jobEntries, setJobEntries, setIsExpAddButtonShown }) {
+    return (
+        <button className="add-button" onClick={(e) => handleAddJob(e, { jobEntries, setJobEntries, setIsExpAddButtonShown })}>Add</button>
+    )
+}
+
 function FormExperience(props) {
     return (
         <>
@@ -289,8 +331,13 @@ function FormExperience(props) {
                             onChange={(e) => handleJobInputChange(e, entry.id, props.jobEntries, props.setJobEntries, "jobDescription")}
                         ></textarea>
                     </label>
+                     <div className="button-group">
+                        <DeleteJobButton entryId={entry.id} jobEntries={props.jobEntries} setJobEntries={props.setJobEntries} setIsExpAddButtonShown={props.setIsExpAddButtonShown} />
+                        {i === props.jobEntries.length - 1 && <AddJobButton jobEntries={props.jobEntries} setJobEntries={props.setJobEntries} setIsExpAddButtonShown={props.setIsExpAddButtonShown} />}
+                    </div>
                 </div>
             ))}
+            {props.isExpAddButtonShown === true && <AddJobButton jobEntries={props.jobEntries}  setJobEntries={props.setJobEntries} setIsExpAddButtonShown={props.setIsExpAddButtonShown}/>}
         </>
     )
 }
@@ -333,4 +380,19 @@ AddEducationButton.propTypes = {
 FormExperience.propTypes = {
     jobEntries: PropTypes.array,
     setJobEntries: PropTypes.func,
+    isExpAddButtonShown: PropTypes.bool,
+    setIsExpAddButtonShown: PropTypes.func,
+}
+
+DeleteJobButton.propTypes = {
+    entryId: PropTypes.string,
+    jobEntries: PropTypes.array,
+    setJobEntries: PropTypes.func,
+    setIsExpAddButtonShown: PropTypes.func,
+}
+
+AddJobButton.propTypes = {
+    jobEntries: PropTypes.array,
+    setJobEntries: PropTypes.func,
+    setIsExpAddButtonShown: PropTypes.func,
 }
