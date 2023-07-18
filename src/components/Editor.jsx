@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 export default function Editor(props) {
     return (
@@ -9,6 +10,8 @@ export default function Editor(props) {
 }
 
 function Form(props) {
+    const [isEduAddButtonShown, setIsEduAddButtonShown] = useState(false);
+
     return (
         <form>
             <section>
@@ -72,8 +75,7 @@ function Form(props) {
             </section>
             <section>
                 <h2 className="editor-heading">Education</h2>
-                <FormEducation {...props} />
-                {/* <AddEducationButton /> */}
+                <FormEducation {...props} isEduAddButtonShown={isEduAddButtonShown} setIsEduAddButtonShown={setIsEduAddButtonShown} />
             </section>
         </form>
     )
@@ -90,9 +92,24 @@ function handleSchoolInputChange(e, id, educationEntries, setEducationEntries, i
     setEducationEntries(newEducationEntries);
 }
 
-function DeleteEducationButton() {
+function handleRemoveEducation(entryId, educationEntries, setEducationEntries, isEduAddButtonShown, setIsEduAddButtonShown) {
+    const newEducationList = educationEntries.filter((entry) => entry.id !== entryId);
+    setEducationEntries(newEducationList);
+
+    // Show add button if there are no education entries
+    if (newEducationList.length === 0) {
+        setIsEduAddButtonShown(true);
+    }
+}
+
+function DeleteEducationButton(props) {
     return (
-        <button className="delete-button">Delete</button>
+        <button
+            type="button"
+            className="delete-button"
+            id={props.entryId}
+            onClick={() => handleRemoveEducation(props.entryId, props.educationEntries, props.setEducationEntries, props.isEduAddButtonShown, props.setIsEduAddButtonShown)}
+        >Delete</button>
     )
 }
 
@@ -163,11 +180,12 @@ function FormEducation(props) {
                         ></input>
                     </label>
                     <div className="button-group">
-                        <DeleteEducationButton />
+                        <DeleteEducationButton entryId={entry.id} educationEntries={props.educationEntries} setEducationEntries={props.setEducationEntries} isEduAddButtonShown={props.isEduAddButtonShown} setIsEduAddButtonShown={props.setIsEduAddButtonShown} />
                         {i === props.educationEntries.length - 1 && <AddEducationButton />}
                     </div>
                 </div>
             ))}
+            {props.isEduAddButtonShown === true && <AddEducationButton />}
         </>
     )
 }
@@ -189,4 +207,14 @@ Form.propTypes = {
 FormEducation.propTypes = {
     educationEntries: PropTypes.array,
     setEducationEntries: PropTypes.func,
+    isEduAddButtonShown: PropTypes.bool,
+    setIsEduAddButtonShown: PropTypes.func,
+}
+
+DeleteEducationButton.propTypes = {
+    entryId: PropTypes.string,
+    educationEntries: PropTypes.array,
+    setEducationEntries: PropTypes.func,
+    isEduAddButtonShown: PropTypes.bool,
+    setIsEduAddButtonShown: PropTypes.func,
 }
