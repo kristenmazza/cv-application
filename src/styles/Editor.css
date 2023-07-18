@@ -2,11 +2,41 @@ form {
     padding: 15px 30px;
 }
 
+.editor-container {
+    flex: 1;
+    max-width: 600px;
+    min-width: 400px;
+    max-height: 90vh;
+    padding: 10px;
+    margin: 30px;
+    background-color: #406954;
+    border-radius: 10px;
+    box-shadow: rgba(74, 141, 101, 0.12) 0px 1px 2px 0px, rgba(36, 86, 60, 0.32) 0px 2px 16px 0px;
+    overflow-y: auto;
+}
+
+.editor-container::-webkit-scrollbar,
+textarea::-webkit-scrollbar {
+    width: 10px;
+}
+
+.editor-container::-webkit-scrollbar-track,
+textarea::-webkit-scrollbar-track {
+    background-color: #e4e4e439;
+    border-radius: 100px;
+}
+
+.editor-container::-webkit-scrollbar-thumb,
+textarea::-webkit-scrollbar-thumb {
+    background-color: #f0f0f05b;
+    border-radius: 100px;
+}
+
 .editor-heading {
     font-size: 20px;
     font-weight: normal;
     line-height: 1;
-    color: #fefefe;
+    color: #FFCB77;
     margin: 8px 0;
     padding-top: 5px;
 }
@@ -15,6 +45,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 3px;
+    padding-bottom: 10px;
 }
 
 .hidden {
@@ -38,7 +69,9 @@ textarea {
 }
 
 textarea {
-    margin-top: 3px;
+    margin: 3px 0 0 0;
+    resize: none;
+    display: block;
 }
 
 ::placeholder {
@@ -61,7 +94,6 @@ textarea {
 input[type="text"]:focus,
 textarea:focus {
     border-color: #FFCB77;
-    /* outline: 1px dotted #c3c3c3 */
 }
 
 textarea {
@@ -78,17 +110,49 @@ textarea::placeholder {
     padding-bottom: 20px;
 }
 
-.delete-button {
+.education-entry:has(+ .editor-heading) {
+    padding-bottom: 10px;
+}
+
+.delete-button,
+.add-button {
+    margin-top: 5px;
     width: 70px;
+    height: 30px;
     font-size: 12px;
+    border: none;
+    outline: none;
+}
+
+.delete-button:focus,
+.add-button:focus {
+    outline: none;
+}
+
+.delete-button {
+    background-color: rgba(38, 38, 38, 0.724);
+    color: #fbfbfb;
+}
+
+.delete-button:hover {
+    background-color: rgba(38, 38, 38, 0.868);
 }
 
 .add-button {
-    width:70px;
-    font-size: 12px;
+    background-color: rgba(234, 234, 234, 0.724);;
+    color: #171717;
+}
+
+.add-button:hover {
+    background-color: rgba(234, 234, 234, 0.83);
+}
+
+.add-button{
+    margin-bottom: 10px;
 }
 
 .button-group {
     display: flex;
     gap: 10px;
 }
+

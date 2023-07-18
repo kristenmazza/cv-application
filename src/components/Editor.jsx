@@ -131,9 +131,9 @@ function DeleteEducationButton({entryId, educationEntries, setEducationEntries, 
     )
 }
 
-function AddEducationButton({ educationEntries, setEducationEntries, setIsEduAddButtonShown }) {
+function AddEducationButton({ educationEntries, setEducationEntries, setIsEduAddButtonShown, isEduButtonShown }) {
     return (
-        <button className="add-button" onClick={(e) => handleAddEducation(e, { educationEntries, setEducationEntries, setIsEduAddButtonShown })}>Add</button>
+        <button className={`add-button ${isEduButtonShown ? "visible" : ""}`}  onClick={(e) => handleAddEducation(e, { educationEntries, setEducationEntries, setIsEduAddButtonShown })}>Add</button>
     )
 }
 
@@ -203,7 +203,7 @@ function FormEducation(props) {
                     </div>
                 </div>
             ))}
-            {props.isEduAddButtonShown === true && <AddEducationButton educationEntries={props.educationEntries}  setEducationEntries={props.setEducationEntries} setIsEduAddButtonShown={props.setIsEduAddButtonShown}/>}
+            {props.isEduAddButtonShown === true && <AddEducationButton educationEntries={props.educationEntries}  setEducationEntries={props.setEducationEntries} setIsEduAddButtonShown={props.setIsEduAddButtonShown} isEduButtonShown={props.isEduAddButtonShown}/>}
         </>
     )
 }
@@ -375,6 +375,7 @@ AddEducationButton.propTypes = {
     educationEntries: PropTypes.array,
     setEducationEntries: PropTypes.func,
     setIsEduAddButtonShown: PropTypes.func,
+    isEduButtonShown: PropTypes.bool,
 }
 
 FormExperience.propTypes = {

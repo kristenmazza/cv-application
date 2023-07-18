@@ -62,7 +62,7 @@ function ResumeEducationBlock({educationEntries}) {
     return (
         <div className="resume-block">
             {educationEntries.map(entry =>
-                <div className="education-entry" key={entry.id}>
+                <div className="resume-education-entry" key={entry.id}>
                     <EducationEntry
                         school={entry.school}
                         schoolLocation={entry.schoolLocation}

@@ -1,11 +1,13 @@
 .resume-container {
     flex: 1;
-    max-width: 600px;
+    max-width: 620px;
     min-width: 400px;
+    max-height: 90vh;
     padding: 10px;
     margin: 30px;
     background-color: #fbfbfb;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    overflow: hidden;
 }
 
 .resume-contact {
@@ -91,4 +93,3 @@ hr {
     font-size: 12px;
     line-height: 1.3;
 }
-
