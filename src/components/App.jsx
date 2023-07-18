@@ -76,15 +76,15 @@ function App() {
       jobDescription: "Provided attentive supervision and maintained a secure and nurturing environment for children aged infants to toddlers within a dynamic daycare facility.",
       id: crypto.randomUUID(),
     },
-      {
-      jobTitle: "Babysitter",
-      jobDateStart: "Dec. 2011",
-      jobDateEnd: "Mar. 2013",
-      jobCompany:"Babysitter Club",
-      jobLocation: "Sunnydale, CA",
-      jobDescription: "Established a trusting and reliable relationship with parents and children as a dedicated member of the Babysitter Club, ensuring a safe and engaging environment during evening and weekend childcare sessions.",
-      id: crypto.randomUUID(),
-    }
+    //   {
+    //   jobTitle: "Babysitter",
+    //   jobDateStart: "Dec. 2011",
+    //   jobDateEnd: "Mar. 2013",
+    //   jobCompany:"Babysitter Club",
+    //   jobLocation: "Sunnydale, CA",
+    //   jobDescription: "Established a trusting and reliable relationship with parents and children as a dedicated member of the Babysitter Club, ensuring a safe and engaging environment during evening and weekend childcare sessions.",
+    //   id: crypto.randomUUID(),
+    // }
   ]
 
   const [educationEntries, setEducationEntries] = useState(initialEducationEntries);

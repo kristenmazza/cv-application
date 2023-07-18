@@ -7,7 +7,24 @@
     margin: 30px;
     background-color: #fbfbfb;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-    overflow: hidden;
+    overflow: auto;
+}
+
+.resume-container::-webkit-scrollbar,
+textarea::-webkit-scrollbar {
+    width: 10px;
+}
+
+.resume-container::-webkit-scrollbar-track,
+textarea::-webkit-scrollbar-track {
+    background-color: #e4e4e477;
+    border-radius: 100px;
+}
+
+.resume-container::-webkit-scrollbar-thumb,
+textarea::-webkit-scrollbar-thumb {
+    background-color: #9999995b;
+    border-radius: 100px;
 }
 
 .resume-contact {
