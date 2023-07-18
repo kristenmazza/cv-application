@@ -14,14 +14,6 @@ function App() {
 
   const initialEducationEntries = [
     {
-      school: "California State University, Los Angeles",
-      schoolLocation: "Los Angeles, CA",
-      schoolDegree: "Bachelor of Science in Psychology",
-      schoolDateStart: "Aug. 2014",
-      schoolDateEnd: "Aug. 2018",
-      id: crypto.randomUUID(),
-    },
-    {
       school: "California State University, Northridge",
       schoolLocation: "Northridge, CA",
       schoolDegree: "Master of Science in Psychology",
@@ -29,9 +21,48 @@ function App() {
       schoolDateEnd: "May 2021",
       id: crypto.randomUUID(),
     },
+    {
+      school: "University of California, Sunnydale",
+      schoolLocation: "Sunnydale, CA",
+      schoolDegree: "Bachelor of Science in Psychology",
+      schoolDateStart: "Aug. 2014",
+      schoolDateEnd: "Aug. 2018",
+      id: crypto.randomUUID(),
+    },
   ];
 
+  const initialJobEntries = [
+    {
+      jobTitle: "School Psychologist",
+      jobDateStart: "Aug. 2021",
+      jobDateEnd: "Aug. 2023",
+      jobCompany:"Sunnydale High School",
+      jobLocation: "Sunnydale, CA",
+      jobDescription: "Conducted comprehensive psychoeducational assessments to identify student learning and behavioral needs. Implemented evidence-based interventions and strategies to support students with diverse learning needs.",
+      id: crypto.randomUUID(),
+    },
+    {
+      jobTitle: "Administrative Assistant",
+      jobDateStart: "Aug. 2015",
+      jobDateEnd: "Jul. 2018",
+      jobCompany:"Sunnydale Elementary School",
+      jobLocation: "Sunnydale, CA",
+      jobDescription: "Provided comprehensive administrative support to the school administration, including handling correspondence, scheduling appointments, managing calendars, and organizing meetings.",
+      id: crypto.randomUUID(),
+    },
+    {
+      jobTitle: "Crew Member",
+      jobDateStart: "Jan. 2013",
+      jobDateEnd: "Apr. 2015",
+      jobCompany:"Doublemeat Palace",
+      jobLocation: "Sunnydale, CA",
+      jobDescription: "Successfully contributed to the efficient operation of a fast-paced restaurant by delivering exceptional customer service and maintaining high standards of cleanliness and food preparation.",
+      id: crypto.randomUUID(),
+    }
+  ]
+
   const [educationEntries, setEducationEntries] = useState(initialEducationEntries);
+  const [jobEntries, setJobEntries] = useState(initialJobEntries);
 
   return (
     <div className="content">
@@ -48,6 +79,8 @@ function App() {
         setSummary={setSummary}
         educationEntries={educationEntries}
         setEducationEntries={setEducationEntries}
+        jobEntries={jobEntries}
+        setJobEntries={setJobEntries}
       />
       <Resume
         name={name}
@@ -56,6 +89,7 @@ function App() {
         location={location}
         summary={summary}
         educationEntries={educationEntries}
+        jobEntries={jobEntries}
       />
     </div>
   )

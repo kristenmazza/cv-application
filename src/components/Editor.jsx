@@ -76,13 +76,16 @@ function Form(props) {
             <section>
                 <h2 className="editor-heading">Education</h2>
                 <FormEducation {...props} isEduAddButtonShown={isEduAddButtonShown} setIsEduAddButtonShown={setIsEduAddButtonShown} />
+                <h2 className="editor-heading">Experience</h2>
+                <FormExperience {...props} />
             </section>
         </form>
     )
 }
 
-function handleSchoolInputChange(e, id, educationEntries, setEducationEntries, item) {
+// Education Editor
 
+function handleSchoolInputChange(e, id, educationEntries, setEducationEntries, item) {
     const currentEducationEntryIndex = educationEntries.findIndex((entry) => entry.id === id);
     const updatedEducationEntry = { ...educationEntries[currentEducationEntryIndex], [item]: e.target.value };
     const newEducationEntries = [...educationEntries.slice(0, currentEducationEntryIndex),
@@ -204,6 +207,94 @@ function FormEducation(props) {
     )
 }
 
+// Experience Editor
+
+function handleJobInputChange(e, id, jobEntries, setJobEntries, item) {
+    const currentJobEntryIndex = jobEntries.findIndex((entry) => entry.id === id);
+    const updatedJobEntry = { ...jobEntries[currentJobEntryIndex], [item]: e.target.value };
+    const newJobEntries = [...jobEntries.slice(0, currentJobEntryIndex),
+        updatedJobEntry,
+        ...jobEntries.slice(currentJobEntryIndex + 1)]
+
+    setJobEntries(newJobEntries);
+}
+
+function FormExperience(props) {
+    return (
+        <>
+            {props.jobEntries.map((entry, i) => (
+                <div className="form-group job-entry" key={entry.id}>
+                    <label htmlFor={`input-job-title-${entry.id}`}>
+                        <div className="hidden">title</div>
+                        <input
+                            type="text"
+                            id={`input-job-title-${entry.id}`}
+                            name="job-title"
+                            placeholder="Title"
+                            value={entry.jobTitle}
+                            onChange={(e) => handleJobInputChange(e, entry.id, props.jobEntries, props.setJobEntries, "jobTitle")}
+                        ></input>
+                    </label>
+                    <label htmlFor={`input-job-date-start-${entry.id}`}>
+                        <div className="hidden">start date</div>
+                        <input
+                            type="text"
+                            id={`input-job-date-start-${entry.id}`}
+                            name="job-date-start"
+                            placeholder="Start Date"
+                            value={entry.jobDateStart}
+                            onChange={(e) => handleJobInputChange(e, entry.id, props.jobEntries, props.setJobEntries, "jobDateStart")}
+                        ></input>
+                    </label>
+                    <label htmlFor={`input-job-date-end-${entry.id}`}>
+                        <div className="hidden">end date</div>
+                        <input
+                            type="text"
+                            id={`input-job-date-end-${entry.id}`}
+                            name="job-date-end"
+                            placeholder="End Date"
+                            value={entry.jobDateEnd}
+                            onChange={(e) => handleJobInputChange(e, entry.id, props.jobEntries, props.setJobEntries, "jobDateEnd")}
+                        ></input>
+                    </label>
+                    <label htmlFor={`input-job-company-${entry.id}`}>
+                        <div className="hidden">company</div>
+                        <input
+                            type="text"
+                            id={`input-job-company-${entry.id}`}
+                            name="job-company"
+                            placeholder="Company"
+                            value={entry.jobCompany}
+                            onChange={(e) => handleJobInputChange(e, entry.id, props.jobEntries, props.setJobEntries, "jobCompany")}
+                        ></input>
+                    </label>
+                    <label htmlFor={`input-job-location-${entry.id}`}>
+                        <div className="hidden">location</div>
+                        <input
+                            type="text"
+                            id={`input-job-location-${entry.id}`}
+                            name="job-location"
+                            placeholder="Location"
+                            value={entry.jobLocation}
+                            onChange={(e) => handleJobInputChange(e, entry.id, props.jobEntries, props.setJobEntries, "jobLocation")}
+                        ></input>
+                    </label>
+                    <label htmlFor={`input-job-description-${entry.id}`}>
+                        <div className="hidden">description</div>
+                          <textarea
+                            id={`input-job-description-${entry.id}`}
+                            name="job-description"
+                            placeholder="Description"
+                            value={entry.jobDescription}
+                            onChange={(e) => handleJobInputChange(e, entry.id, props.jobEntries, props.setJobEntries, "jobDescription")}
+                        ></textarea>
+                    </label>
+                </div>
+            ))}
+        </>
+    )
+}
+
 // Prop types
 Form.propTypes = {
     name: PropTypes.string,
@@ -237,4 +328,9 @@ AddEducationButton.propTypes = {
     educationEntries: PropTypes.array,
     setEducationEntries: PropTypes.func,
     setIsEduAddButtonShown: PropTypes.func,
+}
+
+FormExperience.propTypes = {
+    jobEntries: PropTypes.array,
+    setJobEntries: PropTypes.func,
 }

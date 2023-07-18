@@ -10,7 +10,7 @@ export default function Resume(props) {
     )
 }
 
-export function ResumeContent({name, number, email, location, summary, educationEntries}) {
+export function ResumeContent({name, number, email, location, summary, educationEntries, jobEntries}) {
     return (
         <div className="resume-content">
             <ResumeContact
@@ -24,7 +24,7 @@ export function ResumeContent({name, number, email, location, summary, education
             <ResumeHeading title={"Education"} />
             <ResumeEducationBlock educationEntries={educationEntries} />
             <ResumeHeading title={("Experience")} />
-            <ResumeExperienceBlock />
+            <ResumeExperienceBlock jobEntries={jobEntries} />
         </div>
     )
 }
@@ -114,24 +114,29 @@ function EducationEntrySubheadingItalics({ schoolDegree, schoolDateStart, school
 }
 
 // Experience section
-function ResumeExperienceBlock() {
+function ResumeExperienceBlock({jobEntries}) {
     return (
         <div className="resume-block">
             {/* for each experience entry, create entry below */}
-            <ExperienceEntry
-                jobTitle={"School Psychologist"}
-                jobDateStart={"Aug. 2018"}
-                jobDateEnd={"Aug. 2021"}
-                jobCompany={"Sunnydale High School"}
-                jobLocation={"Sunnydale, CA"}
-            />
+            {jobEntries.map(entry => (
+                <div className="experience-entry" key={entry.id}>
+                    <ExperienceEntry
+                        jobTitle={entry.jobTitle}
+                        jobDateStart={entry.jobDateStart}
+                        jobDateEnd={entry.jobDateEnd}
+                        jobCompany={entry.jobCompany}
+                        jobLocation={entry.jobLocation}
+                        jobDescription={entry.jobDescription}
+                    />
+                </div>
+            ))}
         </div>
     )
 }
 
-function ExperienceEntry({jobTitle, jobDateStart, jobDateEnd, jobCompany, jobLocation}) {
+function ExperienceEntry({jobTitle, jobDateStart, jobDateEnd, jobCompany, jobLocation, jobDescription}) {
     return (
-        <div className="education-entry">
+        <>
             <ExperienceEntrySubheading
                 jobTitle={jobTitle}
                 jobDateStart={jobDateStart}
@@ -141,8 +146,8 @@ function ExperienceEntry({jobTitle, jobDateStart, jobDateEnd, jobCompany, jobLoc
                 jobCompany={jobCompany}
                 jobLocation={jobLocation}
             />
-            <ExperienceEntryListItems />
-        </div>
+            <ExperienceEntryListItems jobDescription={jobDescription} />
+        </>
     )
 }
 
@@ -166,10 +171,10 @@ function ExperienceEntrySubheadingItalics({ jobCompany, jobLocation }) {
     )
 }
 
-function ExperienceEntryListItems() {
+function ExperienceEntryListItems({jobDescription}) {
     return (
         <div className="resume-entry-list">
-            Conducted comprehensive psychoeducational assessments to identify student learning and behavioral needs. Implemented evidence-based interventions and strategies to support students with diverse learning needs.
+            {jobDescription}
         </div>
     )
 }
@@ -215,6 +220,7 @@ ExperienceEntry.propTypes = {
     jobDateEnd: PropTypes.string,
     jobCompany: PropTypes.string,
     jobLocation: PropTypes.string,
+    jobDescription: PropTypes.string,
 }
 
 ExperienceEntrySubheading.propTypes = {
@@ -235,8 +241,17 @@ ResumeContent.propTypes = {
     location: PropTypes.string,
     summary: PropTypes.string,
     educationEntries: PropTypes.array,
+    jobEntries: PropTypes.array,
 }
 
 ResumeEducationBlock.propTypes = {
     educationEntries: PropTypes.array,
+}
+
+ResumeExperienceBlock.propTypes = {
+    jobEntries: PropTypes.array,
+}
+
+ExperienceEntryListItems.propTypes = {
+    jobDescription: PropTypes.string,
 }
