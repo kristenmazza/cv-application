@@ -92,7 +92,7 @@ function handleSchoolInputChange(e, id, educationEntries, setEducationEntries, i
     setEducationEntries(newEducationEntries);
 }
 
-function handleRemoveEducation(entryId, educationEntries, setEducationEntries, isEduAddButtonShown, setIsEduAddButtonShown) {
+function handleRemoveEducation({ entryId, educationEntries, setEducationEntries, setIsEduAddButtonShown }) {
     const newEducationList = educationEntries.filter((entry) => entry.id !== entryId);
     setEducationEntries(newEducationList);
 
@@ -102,20 +102,34 @@ function handleRemoveEducation(entryId, educationEntries, setEducationEntries, i
     }
 }
 
-function DeleteEducationButton(props) {
+function handleAddEducation(e, { setEducationEntries, setIsEduAddButtonShown }) {
+    e.preventDefault();
+    const newItem = {
+        school: "",
+        schoolLocation: "",
+        schoolDegree: "",
+        schoolDateStart: "",
+        schoolDateEnd: "",
+        id: crypto.randomUUID(),
+    }
+    setEducationEntries(educationEntries => [...educationEntries, newItem]);
+    setIsEduAddButtonShown(false);
+}
+
+function DeleteEducationButton({entryId, educationEntries, setEducationEntries, setIsEduAddButtonShown}) {
     return (
         <button
             type="button"
             className="delete-button"
-            id={props.entryId}
-            onClick={() => handleRemoveEducation(props.entryId, props.educationEntries, props.setEducationEntries, props.isEduAddButtonShown, props.setIsEduAddButtonShown)}
+            id={entryId}
+            onClick={() => handleRemoveEducation({ entryId, educationEntries, setEducationEntries, setIsEduAddButtonShown })}
         >Delete</button>
     )
 }
 
-function AddEducationButton() {
+function AddEducationButton({ educationEntries, setEducationEntries, setIsEduAddButtonShown }) {
     return (
-        <button className="add-button">Add</button>
+        <button className="add-button" onClick={(e) => handleAddEducation(e, { educationEntries, setEducationEntries, setIsEduAddButtonShown })}>Add</button>
     )
 }
 
@@ -180,12 +194,12 @@ function FormEducation(props) {
                         ></input>
                     </label>
                     <div className="button-group">
-                        <DeleteEducationButton entryId={entry.id} educationEntries={props.educationEntries} setEducationEntries={props.setEducationEntries} isEduAddButtonShown={props.isEduAddButtonShown} setIsEduAddButtonShown={props.setIsEduAddButtonShown} />
-                        {i === props.educationEntries.length - 1 && <AddEducationButton />}
+                        <DeleteEducationButton entryId={entry.id} educationEntries={props.educationEntries} setEducationEntries={props.setEducationEntries} setIsEduAddButtonShown={props.setIsEduAddButtonShown} />
+                        {i === props.educationEntries.length - 1 && <AddEducationButton educationEntries={props.educationEntries} setEducationEntries={props.setEducationEntries} setIsEduAddButtonShown={props.setIsEduAddButtonShown} />}
                     </div>
                 </div>
             ))}
-            {props.isEduAddButtonShown === true && <AddEducationButton />}
+            {props.isEduAddButtonShown === true && <AddEducationButton educationEntries={props.educationEntries}  setEducationEntries={props.setEducationEntries} setIsEduAddButtonShown={props.setIsEduAddButtonShown}/>}
         </>
     )
 }
@@ -216,5 +230,11 @@ DeleteEducationButton.propTypes = {
     educationEntries: PropTypes.array,
     setEducationEntries: PropTypes.func,
     isEduAddButtonShown: PropTypes.bool,
+    setIsEduAddButtonShown: PropTypes.func,
+}
+
+AddEducationButton.propTypes = {
+    educationEntries: PropTypes.array,
+    setEducationEntries: PropTypes.func,
     setIsEduAddButtonShown: PropTypes.func,
 }
