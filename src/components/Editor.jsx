@@ -138,55 +138,55 @@ function FormEducation(props) {
         <>
             {props.educationEntries.map((entry, i) => (
                 <div className="form-group education-entry" key={entry.id}>
-                    <label htmlFor="input-school-name">
+                    <label htmlFor={`input-school-name-${entry.id}`}>
                         <div className="hidden">university</div>
                         <input
                             type="text"
-                            id="input-school-name"
+                            id={`input-school-name-${entry.id}`}
                             name="school-name"
                             placeholder="University"
                             value={entry.school}
                             onChange={(e) => handleSchoolInputChange(e, entry.id, props.educationEntries, props.setEducationEntries, "school")}
                         ></input>
                     </label>
-                    <label htmlFor="input-school-location">
+                    <label htmlFor={`input-school-location-${entry.id}`}>
                         <div className="hidden">location</div>
                         <input
                             type="text"
-                            id="input-school-location"
+                            id={`input-school-location-${entry.id}`}
                             name="school-location"
                             placeholder="Location"
                             value={entry.schoolLocation}
                             onChange={(e) => handleSchoolInputChange(e, entry.id, props.educationEntries, props.setEducationEntries, "schoolLocation")}
                         ></input>
                     </label>
-                    <label htmlFor="input-school-degree">
+                    <label htmlFor={`input-school-degree-${entry.id}`}>
                         <div className="hidden">degree</div>
                         <input
                             type="text"
-                            id="input-school-degree"
+                            id={`input-school-degree-${entry.id}`}
                             name="school-degree"
                             placeholder="Degree"
                             value={entry.schoolDegree}
                             onChange={(e) => handleSchoolInputChange(e, entry.id, props.educationEntries, props.setEducationEntries, "schoolDegree")}
                         ></input>
                     </label>
-                     <label htmlFor="input-school-date-start">
+                     <label htmlFor={`input-school-date-start-${entry.id}`}>
                         <div className="hidden">start date</div>
                         <input
                             type="text"
-                            id="input-school-date-start"
+                            id={`input-school-date-start-${entry.id}`}
                             name="school-date-start"
                             placeholder="Start Date"
                             value={entry.schoolDateStart}
                             onChange={(e) => handleSchoolInputChange(e, entry.id, props.educationEntries, props.setEducationEntries, "schoolDateStart")}
                         ></input>
                     </label>
-                    <label htmlFor="input-school-date-end">
+                    <label htmlFor={`input-school-date-end-${entry.id}`}>
                         <div className="hidden">end date</div>
                         <input
                             type="text"
-                            id="input-school-date-end"
+                            id={`input-school-date-end-${entry.id}`}
                             name="school-date-end"
                             placeholder="End Date"
                             value={entry.schoolDateEnd}
