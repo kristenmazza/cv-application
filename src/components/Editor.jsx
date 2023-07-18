@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Editor(props) {
     return (
@@ -114,7 +115,7 @@ function handleAddEducation(e, { setEducationEntries, setIsEduAddButtonShown }) 
         schoolDegree: "",
         schoolDateStart: "",
         schoolDateEnd: "",
-        id: crypto.randomUUID(),
+        id: uuidv4(),
     }
     setEducationEntries(educationEntries => [...educationEntries, newItem]);
     setIsEduAddButtonShown(false);
@@ -238,7 +239,7 @@ function handleAddJob(e, { setJobEntries, setIsExpAddButtonShown }) {
         schoolDegree: "",
         schoolDateStart: "",
         schoolDateEnd: "",
-        id: crypto.randomUUID(),
+        id: uuidv4(),
     }
     setJobEntries(jobEntries => [...jobEntries, newItem]);
     setIsExpAddButtonShown(false);

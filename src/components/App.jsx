@@ -4,6 +4,7 @@ import '../styles/Resume.css'
 import '../styles/Editor.css'
 import Editor from './Editor'
 import Resume from './Resume'
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   const [name, setName] = useState("Liam Benson");
@@ -19,7 +20,7 @@ function App() {
       schoolDegree: "Master of Science in Psychology",
       schoolDateStart: "Aug. 2019",
       schoolDateEnd: "May 2021",
-      id: crypto.randomUUID(),
+      id: uuidv4(),
     },
     {
       school: "University of California, Sunnydale",
@@ -27,7 +28,7 @@ function App() {
       schoolDegree: "Bachelor of Science in Psychology",
       schoolDateStart: "Aug. 2016",
       schoolDateEnd: "Aug. 2018",
-      id: crypto.randomUUID(),
+      id: uuidv4(),
     },
       {
       school: "Sunnydale College",
@@ -35,7 +36,7 @@ function App() {
       schoolDegree: "Associate of Arts in Child Development",
       schoolDateStart: "Aug. 2014",
       schoolDateEnd: "Aug. 2018",
-      id: crypto.randomUUID(),
+      id: uuidv4(),
     },
   ];
 
@@ -47,7 +48,7 @@ function App() {
       jobCompany:"Sunnydale High School",
       jobLocation: "Sunnydale, CA",
       jobDescription: "Conducted comprehensive psychoeducational assessments to identify student learning and behavioral needs. Implemented evidence-based interventions and strategies to support students with diverse learning needs.",
-      id: crypto.randomUUID(),
+      id: uuidv4(),
     },
     {
       jobTitle: "Administrative Assistant",
@@ -56,7 +57,7 @@ function App() {
       jobCompany:"Sunnydale Elementary School",
       jobLocation: "Sunnydale, CA",
       jobDescription: "Provided comprehensive administrative support to the school administration, including handling correspondence, scheduling appointments, managing calendars, and organizing meetings.",
-      id: crypto.randomUUID(),
+      id: uuidv4(),
     },
     {
       jobTitle: "Crew Member",
@@ -65,7 +66,7 @@ function App() {
       jobCompany:"Doublemeat Palace",
       jobLocation: "Sunnydale, CA",
       jobDescription: "Successfully contributed to the efficient operation of a fast-paced restaurant by delivering exceptional customer service and maintaining high standards of cleanliness and food preparation.",
-      id: crypto.randomUUID(),
+      id: uuidv4(),
     },
     {
       jobTitle: "Childcare Provider",
@@ -74,7 +75,7 @@ function App() {
       jobCompany:"Daily Daycare",
       jobLocation: "Sunnydale, CA",
       jobDescription: "Provided attentive supervision and maintained a secure and nurturing environment for children aged infants to toddlers within a dynamic daycare facility.",
-      id: crypto.randomUUID(),
+      id: uuidv4(),
     },
     //   {
     //   jobTitle: "Babysitter",
@@ -83,7 +84,7 @@ function App() {
     //   jobCompany:"Babysitter Club",
     //   jobLocation: "Sunnydale, CA",
     //   jobDescription: "Established a trusting and reliable relationship with parents and children as a dedicated member of the Babysitter Club, ensuring a safe and engaging environment during evening and weekend childcare sessions.",
-    //   id: crypto.randomUUID(),
+    //   id: uuidv4(),
     // }
   ]
 
